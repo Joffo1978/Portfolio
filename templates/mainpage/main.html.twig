@@ -92,7 +92,7 @@
                                     {% set iteration = iteration + 1 %}
                                     <h3><Strong>{{ etapepro.mois }} {{ etapepro.year }} - {{ etapepro.job }} chez {{ etapepro.company }}</Strong><br /></h3>
                                     <div id={{ 'cacher'~ iteration }}>
-                                        <img src={{ asset("menu.jpg") }} title="Cliquez pour etendre" id={{ 'bouton'~ iteration }}}/>
+                                        <img src={{ asset("menu.jpg") }} title="Cliquez pour etendre" id= "button"/>
                                         <ul>
                                             {% for step in steps %}
                                                 {% if  step.etapespro.company  ==  etapepro.company  %}
@@ -113,31 +113,34 @@
                                 <script>
 
 
-                                    let bouton = ['','','','','',''];
+                                    /*let bouton = ['','','','','',''];*/
                                     let cacher = ['','','','','',''];
                                     for (let pas = 0; pas < {{ iteration}} ; pas++) {
 
-                                        bouton[pas]='bouton' + pas;
-                                        cacher[pas]='bouton' + pas
+                                    /*bouton[pas]='bouton' + pas;*/
+                                    cacher[pas]='bouton' + pas
 
-                                    window [bouton[pas]]= document.getElementById(bouton[pas]);
-                                    window [cacher[pas]] = document.getElementById(cacher[pas]);
-                                    }
+                                let button= document.getElementById("button");
+                                window [cacher[pas]] = document.getElementById(cacher[pas]);
+                                }
+                                            for (let pas = 0; pas < {{ iteration }} ; pas++) {
+                                                button[pas].addEventListener('click', function () {
+                                                    if ()
+                                                            if (window[bouton[pas]].style.display === "none") {
+                                                                window [cacher[pas]].style.display = "block";
+                                                                window[bouton[pas]].src = "menu2.jpg";
+                                                                window[bouton[pas]].title = "Cliquez pour réduire";
+                                                            }
+                                                            else
+                                                            {
+                                                                window [cacher[pas]].style.display = "none";
+                                                                window[bouton[pas]].src = "menu.jpg";
+                                                                window[bouton[pas]].title = "Cliquez pour étendre";
 
-                                    cliquage()
+                                                            }
+                                                    });
+                                            };
 
-                                    function cliquage() {
-                                        for (let pas = 0; pas < {{ iteration}} ; pas++) {
-                                        if (window[bouton[pas]].style.display === "none") {
-                                            window [cacher[pas]].style.display = "block";
-                                            window[bouton[pas]].src="./images/menu2.jpg";
-                                            window[bouton[pas]].title="Cliquez pour réduire";
-                                        } elseif {
-                                            cacher.style.display  = "none";
-                                            window[bouton[pas]].src="./images/menu.jpg";
-                                            window[bouton[pas]].title="Cliquez pour étendre";
-
-                                        }}
 
 
 
